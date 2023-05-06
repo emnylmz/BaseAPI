@@ -1,0 +1,15 @@
+/Users/eminyilmaz/projects/BaseAPI/BaseAPI.Data/bin/Debug/net7.0/BaseAPI.Data.deps.json
+/Users/eminyilmaz/projects/BaseAPI/BaseAPI.Data/bin/Debug/net7.0/BaseAPI.Data.dll
+/Users/eminyilmaz/projects/BaseAPI/BaseAPI.Data/bin/Debug/net7.0/BaseAPI.Data.pdb
+/Users/eminyilmaz/projects/BaseAPI/BaseAPI.Data/bin/Debug/net7.0/BaseAPI.Core.dll
+/Users/eminyilmaz/projects/BaseAPI/BaseAPI.Data/bin/Debug/net7.0/BaseAPI.Core.pdb
+/Users/eminyilmaz/projects/BaseAPI/BaseAPI.Data/obj/Debug/net7.0/BaseAPI.Data.csproj.AssemblyReference.cache
+/Users/eminyilmaz/projects/BaseAPI/BaseAPI.Data/obj/Debug/net7.0/BaseAPI.Data.GeneratedMSBuildEditorConfig.editorconfig
+/Users/eminyilmaz/projects/BaseAPI/BaseAPI.Data/obj/Debug/net7.0/BaseAPI.Data.AssemblyInfoInputs.cache
+/Users/eminyilmaz/projects/BaseAPI/BaseAPI.Data/obj/Debug/net7.0/BaseAPI.Data.AssemblyInfo.cs
+/Users/eminyilmaz/projects/BaseAPI/BaseAPI.Data/obj/Debug/net7.0/BaseAPI.Data.csproj.CoreCompileInputs.cache
+/Users/eminyilmaz/projects/BaseAPI/BaseAPI.Data/obj/Debug/net7.0/BaseAPI.Data.csproj.CopyComplete
+/Users/eminyilmaz/projects/BaseAPI/BaseAPI.Data/obj/Debug/net7.0/BaseAPI.Data.dll
+/Users/eminyilmaz/projects/BaseAPI/BaseAPI.Data/obj/Debug/net7.0/refint/BaseAPI.Data.dll
+/Users/eminyilmaz/projects/BaseAPI/BaseAPI.Data/obj/Debug/net7.0/BaseAPI.Data.pdb
+/Users/eminyilmaz/projects/BaseAPI/BaseAPI.Data/obj/Debug/net7.0/ref/BaseAPI.Data.dll

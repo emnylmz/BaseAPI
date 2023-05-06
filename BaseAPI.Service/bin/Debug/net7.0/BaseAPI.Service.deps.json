@@ -1,0 +1,49 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v7.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v7.0": {
+      "BaseAPI.Service/1.0.0": {
+        "dependencies": {
+          "BaseAPI.Data": "1.0.0"
+        },
+        "runtime": {
+          "BaseAPI.Service.dll": {}
+        }
+      },
+      "BaseAPI.Core/1.0.0": {
+        "runtime": {
+          "BaseAPI.Core.dll": {}
+        }
+      },
+      "BaseAPI.Data/1.0.0": {
+        "dependencies": {
+          "BaseAPI.Core": "1.0.0"
+        },
+        "runtime": {
+          "BaseAPI.Data.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "BaseAPI.Service/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "BaseAPI.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "BaseAPI.Data/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
