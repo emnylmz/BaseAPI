@@ -1,4 +1,5 @@
 /Users/eminyilmaz/projects/BaseAPI/BaseAPI.Data/bin/Debug/net7.0/BaseAPI.Data.deps.json
+/Users/eminyilmaz/projects/BaseAPI/BaseAPI.Data/bin/Debug/net7.0/BaseAPI.Data.runtimeconfig.json
 /Users/eminyilmaz/projects/BaseAPI/BaseAPI.Data/bin/Debug/net7.0/BaseAPI.Data.dll
 /Users/eminyilmaz/projects/BaseAPI/BaseAPI.Data/bin/Debug/net7.0/BaseAPI.Data.pdb
 /Users/eminyilmaz/projects/BaseAPI/BaseAPI.Data/bin/Debug/net7.0/BaseAPI.Core.dll
@@ -12,4 +13,5 @@
 /Users/eminyilmaz/projects/BaseAPI/BaseAPI.Data/obj/Debug/net7.0/BaseAPI.Data.dll
 /Users/eminyilmaz/projects/BaseAPI/BaseAPI.Data/obj/Debug/net7.0/refint/BaseAPI.Data.dll
 /Users/eminyilmaz/projects/BaseAPI/BaseAPI.Data/obj/Debug/net7.0/BaseAPI.Data.pdb
+/Users/eminyilmaz/projects/BaseAPI/BaseAPI.Data/obj/Debug/net7.0/BaseAPI.Data.genruntimeconfig.cache
 /Users/eminyilmaz/projects/BaseAPI/BaseAPI.Data/obj/Debug/net7.0/ref/BaseAPI.Data.dll
