@@ -1,10 +1,13 @@
 ﻿using System.Reflection;
+using AutoMapper;
 using BaseAPI.Core.Interfaces.Repository;
 using BaseAPI.Core.Interfaces.UnitOfWork;
 using BaseAPI.Data;
 using BaseAPI.Data.Repositories;
 using BaseAPI.Data.UnitOfWorks;
+using BaseAPI.Service.Mapping;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +20,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IUnitOfWork,UnitOfWork>();
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+builder.Services.AddAutoMapper(Assembly.GetAssembly(typeof(Profile)).GetType());
 
 builder.Services.AddDbContext<AppDbContext>(x =>
 x.UseSqlServer(builder.Configuration.GetConnectionString("SqlConnection"), option =>

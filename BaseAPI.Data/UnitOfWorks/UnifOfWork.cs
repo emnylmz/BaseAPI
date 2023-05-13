@@ -5,16 +5,21 @@ namespace BaseAPI.Data.UnitOfWorks
 {
 	public class UnitOfWork:IUnitOfWork
 	{
-		private readonly AppDbContext context;
+		private readonly AppDbContext _context;
+
+        public UnitOfWork(AppDbContext context)
+        {
+            _context = context;
+        }
 
         public void Commit()
         {
-            context.SaveChanges();
+            _context.SaveChanges();
         }
 
         public async Task CommitAsync()
         {
-            context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
         }
     }
 }

@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+    <Nullable>disable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
@@ -11,11 +11,15 @@
     <None Remove="Interfaces\Repository\" />
     <None Remove="Interfaces\Service\" />
     <None Remove="Interfaces\UnitOfWork\" />
+    <None Remove="DTOs\" />
+    <None Remove="Model\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Interfaces\" />
     <Folder Include="Interfaces\Repository\" />
     <Folder Include="Interfaces\Service\" />
     <Folder Include="Interfaces\UnitOfWork\" />
+    <Folder Include="DTOs\" />
+    <Folder Include="Model\" />
   </ItemGroup>
 </Project>

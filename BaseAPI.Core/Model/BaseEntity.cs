@@ -1,5 +1,5 @@
 ﻿using System;
-namespace BaseAPI.Core
+namespace BaseAPI.Core.Model
 {
 	public abstract class BaseEntity
 	{

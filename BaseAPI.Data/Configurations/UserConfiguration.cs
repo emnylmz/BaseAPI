@@ -1,5 +1,5 @@
 ﻿using System;
-using BaseAPI.Core;
+using BaseAPI.Core.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
