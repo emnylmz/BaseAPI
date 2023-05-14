@@ -1,11 +1,14 @@
 ﻿using System.Reflection;
 using AutoMapper;
 using BaseAPI.Core.Interfaces.Repository;
+using BaseAPI.Core.Interfaces.Service;
 using BaseAPI.Core.Interfaces.UnitOfWork;
+using BaseAPI.Core.Model;
 using BaseAPI.Data;
 using BaseAPI.Data.Repositories;
 using BaseAPI.Data.UnitOfWorks;
 using BaseAPI.Service.Mapping;
+using BaseAPI.Service.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -19,8 +22,11 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IUnitOfWork,UnitOfWork>();
+builder.Services.AddScoped<IService<User>, UserService>();
+
+
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-builder.Services.AddAutoMapper(Assembly.GetAssembly(typeof(Profile)).GetType());
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddDbContext<AppDbContext>(x =>
 x.UseSqlServer(builder.Configuration.GetConnectionString("SqlConnection"), option =>
