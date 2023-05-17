@@ -14,6 +14,7 @@ namespace BaseAPI.Core.Model
         public DateTime? LastLoginDate { get; set; }
 		public string? LastLoginIP { get; set; }
 		public bool IsActive { get; set; }
+		public string LastIV { get; set; }
 
 	}
 }

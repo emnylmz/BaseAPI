@@ -19,22 +19,37 @@ namespace BaseAPI.API.Controllers
     {
         private readonly IMapper _mapper;
         private readonly IService<User> _service;
+        private readonly IPasswordService _passwordService;
 
-        public UsersController(IService<User> service, IMapper mapper)
+        public UsersController(IService<User> service,
+            IMapper mapper,
+            IConfiguration configuration,
+            IPasswordService passwordService)
         {
             _service = service;
             _mapper = mapper;
+            _passwordService = passwordService;
         }
 
         [HttpGet]
         [Route("All")]
-        [AllowAnonymous]
         public async Task<IActionResult> All()
         {
             var users = await _service.GetAllAsync();
             var userDtos = _mapper.Map<List<UserDto>>(users.ToList());
             return CreateActionResult(CustomResponseDto<List<UserDto>>.Success(200, userDtos));
         }
+
+        [HttpPost]
+        [Route("CreateUser")]
+        public async Task<IActionResult> CreateUser(User user)
+        {
+            var entity = await _service.AddAsync(user);
+            var userDto = _mapper.Map<UserDto>(user);
+            return CreateActionResult(CustomResponseDto<UserDto>.Success(200, userDto));
+        }
+
+
     }
 
 

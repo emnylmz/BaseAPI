@@ -16,6 +16,7 @@ namespace BaseAPI.Data.Configuration
             builder.Property(x => x.Firstname).IsRequired().HasMaxLength(100);
             builder.Property(x => x.Lastname).IsRequired().HasMaxLength(100);
             builder.Property(x => x.Gender).IsRequired().HasMaxLength(10);
+            builder.Property(x => x.LastIV).IsRequired().HasMaxLength(100);
             builder.ToTable("Users");
         }
     }

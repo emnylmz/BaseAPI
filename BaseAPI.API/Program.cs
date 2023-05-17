@@ -9,7 +9,9 @@ using BaseAPI.Data.Repositories;
 using BaseAPI.Data.UnitOfWorks;
 using BaseAPI.Service.Mapping;
 using BaseAPI.Service.Services;
+using BaseAPI.Service.Services.Custom;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -23,13 +25,17 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IUnitOfWork,UnitOfWork>();
 builder.Services.AddScoped<IService<User>, UserService>();
+builder.Services.AddScoped<IPasswordService, PasswordService>();
 
+var settings = builder.Configuration.GetRequiredSection("Settings").Get<Settings>();
+
+builder.Services.Configure<Settings>(builder.Configuration.GetRequiredSection("Settings"));
 
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddDbContext<AppDbContext>(x =>
-x.UseSqlServer(builder.Configuration.GetConnectionString("SqlConnection"), option =>
+x.UseSqlServer(settings?.MsSQLConnection, option =>
 {
     option.MigrationsAssembly(Assembly.GetAssembly(typeof(AppDbContext)).GetName().Name);
 }

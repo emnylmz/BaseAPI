@@ -18,7 +18,7 @@ namespace BaseAPI.Service.Services
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<T> AddAsync(T entity)
+        public virtual async Task<T> AddAsync(T entity)
         {
             await _repository.AddAsync(entity);
             await _unitOfWork.CommitAsync();
@@ -37,7 +37,7 @@ namespace BaseAPI.Service.Services
             return await _repository.AnyAsync(expression);
         }
 
-        public async Task<IEnumerable<T>> GetAllAsync()
+        public virtual async Task<IEnumerable<T>> GetAllAsync()
         {
             return await _repository.GetAll().ToListAsync();
         }

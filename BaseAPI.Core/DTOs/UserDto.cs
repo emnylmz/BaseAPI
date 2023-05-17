@@ -5,6 +5,7 @@ namespace BaseAPI.Core.DTOs
 	{
 		//DTO amacı sadece ihtiyacımız olan alanlar
 		public int Id { get; set; }
+		public string FullName { get; set; }
 	}
 }
 

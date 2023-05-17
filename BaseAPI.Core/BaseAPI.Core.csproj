@@ -13,6 +13,7 @@
     <None Remove="Interfaces\UnitOfWork\" />
     <None Remove="DTOs\" />
     <None Remove="Model\" />
+    <None Remove="Interfaces\Custom\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Interfaces\" />
@@ -21,5 +22,6 @@
     <Folder Include="Interfaces\UnitOfWork\" />
     <Folder Include="DTOs\" />
     <Folder Include="Model\" />
+    <Folder Include="Interfaces\Custom\" />
   </ItemGroup>
 </Project>
