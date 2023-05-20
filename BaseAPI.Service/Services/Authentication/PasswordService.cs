@@ -3,7 +3,7 @@ using BaseAPI.Core.Interfaces.Service;
 using BaseAPI.Core.Model;
 using Microsoft.Extensions.Options;
 
-namespace BaseAPI.Service.Services.Custom
+namespace BaseAPI.Service.Services
 {
     public class PasswordService : IPasswordService
     {

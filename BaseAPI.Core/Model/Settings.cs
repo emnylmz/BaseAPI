@@ -7,7 +7,14 @@ namespace BaseAPI.Core.Model
 
 		public string MsSQLConnection { get; set; }
 
-		public int ExpireMinutes { get; set; }
+		public JWTSettings JWTSettings { get; set; }
 	}
+
+	public class JWTSettings
+    {
+		public string SecretKey { get; set; }
+
+        public int ExpireMinutes { get; set; }
+    }
 }
 

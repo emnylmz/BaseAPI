@@ -19,15 +19,17 @@ namespace BaseAPI.API.Controllers
     public class UsersController : BaseController
     {
         private readonly IMapper _mapper;
-        private readonly UserService _service;
+        private readonly IUserService _userService;
         private readonly IPasswordService _passwordService;
 
-        public UsersController(UserService service,
+        public UsersController(
             IMapper mapper,
             IConfiguration configuration,
-            IPasswordService passwordService)
+            IPasswordService passwordService,
+            IUserService userService
+            )
         {
-            _service = service;
+            _userService = userService;
             _mapper = mapper;
             _passwordService = passwordService;
         }
@@ -36,7 +38,7 @@ namespace BaseAPI.API.Controllers
         [Route("All")]
         public async Task<IActionResult> All()
         {
-            var users = await _service.GetAllAsync();
+            var users = await _userService.GetAllAsync();
             var userDtos = _mapper.Map<List<UserDto>>(users.ToList());
             return CreateActionResult(CustomResponseDto<List<UserDto>>.Success(200, userDtos));
         }
@@ -45,7 +47,7 @@ namespace BaseAPI.API.Controllers
         [Route("CreateUser")]
         public async Task<IActionResult> CreateUser(User user)
         {
-            var entity = await _service.AddAsync(user);
+            var entity = await _userService.AddAsync(user);
             var userDto = _mapper.Map<UserDto>(user);
             return CreateActionResult(CustomResponseDto<UserDto>.Success(200, userDto));
         }
@@ -54,7 +56,7 @@ namespace BaseAPI.API.Controllers
         [Route("Login")]
         public async Task<IActionResult> Login(LoginDto loginDto)
         {
-            bool res = _service.CheckPassAsync(loginDto);
+            bool res = _userService.CheckPassAsync(loginDto);
             return CreateActionResult(CustomResponseDto<bool>.Success(200, res));
         }
 

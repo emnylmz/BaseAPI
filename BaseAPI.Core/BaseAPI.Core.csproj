@@ -14,6 +14,7 @@
     <None Remove="DTOs\" />
     <None Remove="Model\" />
     <None Remove="Interfaces\Custom\" />
+    <None Remove="Interfaces\Service\Authentication\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Interfaces\" />
@@ -22,6 +23,6 @@
     <Folder Include="Interfaces\UnitOfWork\" />
     <Folder Include="DTOs\" />
     <Folder Include="Model\" />
-    <Folder Include="Interfaces\Custom\" />
+    <Folder Include="Interfaces\Service\Authentication\" />
   </ItemGroup>
 </Project>

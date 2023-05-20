@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using AutoMapper;
+using BaseAPI.Core.Interfaces.Authentication;
 using BaseAPI.Core.Interfaces.Repository;
 using BaseAPI.Core.Interfaces.Service;
 using BaseAPI.Core.Interfaces.UnitOfWork;
@@ -9,7 +10,6 @@ using BaseAPI.Data.Repositories;
 using BaseAPI.Data.UnitOfWorks;
 using BaseAPI.Service.Mapping;
 using BaseAPI.Service.Services;
-using BaseAPI.Service.Services.Custom;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -23,15 +23,19 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddScoped<IUnitOfWork,UnitOfWork>();
-builder.Services.AddScoped<IService<User>, UserService>();
+builder.Services.AddScoped(typeof(IGenericRepository<>),typeof(GenericRepository<>));
+builder.Services.AddScoped(typeof(IService<>), typeof(BaseService<>));
+
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IPasswordService, PasswordService>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<IJWTService, JWTService>();
+builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 
 var settings = builder.Configuration.GetRequiredSection("Settings").Get<Settings>();
 
 builder.Services.Configure<Settings>(builder.Configuration.GetRequiredSection("Settings"));
-
-builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddDbContext<AppDbContext>(x =>
