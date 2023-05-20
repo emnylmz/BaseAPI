@@ -33,16 +33,16 @@ namespace BaseAPI.Service.Services
             return base.AddAsync(entity);
         }
 
-        public bool CheckPassAsync(LoginDto loginDto)
+        public async Task<User> CheckPassAsync(LoginDto loginDto)
         {
-            var user = _userRepository.GetByUsername(loginDto.Username);
+            var user = await _userRepository.GetByUsername(loginDto.Username);
 
             if (user == null)
-                return false;
+                return user;
             else if (!_passwordService.
                 CompareEncrytedAndUnencryptedPassword(user.Password, user.LastIV, loginDto.Password))
-                return false;
-            return true;
+                return null;
+            return user;
         }
     }
 }

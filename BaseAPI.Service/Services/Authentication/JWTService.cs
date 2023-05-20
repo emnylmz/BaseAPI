@@ -20,17 +20,27 @@ namespace BaseAPI.Service.Services
 
         public string GenerateToken(User user)
         {
-            // generate token that is valid for 7 days
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(_settings.JWTSettings.SecretKey);
-            var tokenDescriptor = new SecurityTokenDescriptor
+            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_settings.JWTSettings.SecretKey));
+            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+
+            var claims = new[]
             {
-                Subject = new ClaimsIdentity(new[] { new Claim("id", user.Id.ToString()) }),
-                Expires = DateTime.UtcNow.AddMinutes(_settings.JWTSettings.ExpireMinutes),
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
-            };
-            var token = tokenHandler.CreateToken(tokenDescriptor);
-            return tokenHandler.WriteToken(token);
+            new Claim(JwtRegisteredClaimNames.Sub, user.Username),
+            new Claim("fullName", user.Firstname + " " + user.Lastname),
+            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+            new Claim(JwtRegisteredClaimNames.Aud, _settings.JWTSettings.Audience),
+            new Claim(JwtRegisteredClaimNames.Iss, _settings.JWTSettings.Issuer)
+        };
+
+            var token = new JwtSecurityToken(
+                issuer: _settings.JWTSettings.Issuer,
+                audience: _settings.JWTSettings.Audience,
+                claims: claims,
+                expires: DateTime.Now.AddMonths(2),
+                signingCredentials: credentials
+                );
+
+            return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
         public int? ValidateToken(string token)

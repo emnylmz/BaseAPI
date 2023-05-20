@@ -6,7 +6,7 @@ namespace BaseAPI.Core.Interfaces.Repository
 {
 	public interface IUserRepository: IGenericRepository<User>
     {
-        User GetByUsername(string username);
+        Task<User> GetByUsername(string username);
     }
 }
 

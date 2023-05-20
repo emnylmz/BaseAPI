@@ -1,9 +1,11 @@
 ﻿using System;
+using BaseAPI.Core.Model;
+
 namespace BaseAPI.Core.Interfaces.Authentication
 {
 	public interface IAuthenticationService
 	{
-		string Login();	
+		string Login(User user);	
 	}
 }
 

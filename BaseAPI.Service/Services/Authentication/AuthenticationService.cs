@@ -12,16 +12,16 @@ namespace BaseAPI.Service.Services
 {
 	public class AuthenticationService : IAuthenticationService
     {
-        private readonly UserService _userService;
+        private readonly IJWTService _jwtService;
 
-        public AuthenticationService()
+        public AuthenticationService(IJWTService jwtService)
         {
-
+            _jwtService = jwtService;
         }
 
-        public string Login()
+        public string Login(User user)
         {
-            throw new NotImplementedException();
+            return _jwtService.GenerateToken(user);
         }
     }
 }

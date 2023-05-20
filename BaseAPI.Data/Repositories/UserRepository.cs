@@ -14,9 +14,9 @@ namespace BaseAPI.Data.Repositories
             _dbSet = context.Set<User>();
         }
 
-        public User GetByUsername(string username)
+        public async Task<User> GetByUsername(string username)
         {
-            return _dbSet.FirstOrDefault(u => u.Username == username);
+            return await _dbSet.FirstOrDefaultAsync(u => u.Username == username);
         }
     }
 }

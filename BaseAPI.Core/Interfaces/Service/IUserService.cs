@@ -7,7 +7,7 @@ namespace BaseAPI.Core.Interfaces.Service
 {
     public interface IUserService:IService<User>
     {
-        bool CheckPassAsync(LoginDto loginDto);
+        Task<User> CheckPassAsync(LoginDto loginDto);
     }
 }
 

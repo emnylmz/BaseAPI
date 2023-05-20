@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using BaseAPI.Core.DTOs;
+using BaseAPI.Core.Interfaces.Authentication;
 using BaseAPI.Core.Interfaces.Service;
 using BaseAPI.Core.Model;
 using BaseAPI.Service.Services;
@@ -16,51 +17,41 @@ namespace BaseAPI.API.Controllers
     [Route("api/[controller]")]
     [ApiController]
     
-    public class UsersController : BaseController
+    public class AuthenticationController : BaseController
     {
         private readonly IMapper _mapper;
+        private readonly IAuthenticationService _authenticationService;
         private readonly IUserService _userService;
-        private readonly IPasswordService _passwordService;
 
-        public UsersController(
+        public AuthenticationController(
             IMapper mapper,
-            IConfiguration configuration,
-            IPasswordService passwordService,
+            IAuthenticationService authenticationService,
             IUserService userService
             )
         {
+            _authenticationService = authenticationService;
             _userService = userService;
             _mapper = mapper;
-            _passwordService = passwordService;
-        }
-
-        [HttpGet]
-        [Route("All")]
-        public async Task<IActionResult> All()
-        {
-            var users = await _userService.GetAllAsync();
-            var userDtos = _mapper.Map<List<UserDto>>(users.ToList());
-            return CreateActionResult(CustomResponseDto<List<UserDto>>.Success(200, userDtos));
-        }
-
-        [HttpPost]
-        [Route("CreateUser")]
-        public async Task<IActionResult> CreateUser(User user)
-        {
-            var entity = await _userService.AddAsync(user);
-            var userDto = _mapper.Map<UserDto>(user);
-            return CreateActionResult(CustomResponseDto<UserDto>.Success(200, userDto));
         }
 
         [HttpPost]
         [Route("Login")]
         public async Task<IActionResult> Login(LoginDto loginDto)
         {
-            bool res = _userService.CheckPassAsync(loginDto);
-            return CreateActionResult(CustomResponseDto<bool>.Success(200, res));
+            var user = await _userService.CheckPassAsync(loginDto);
+
+            //user gelirse şifre doğru
+            //burası değişebilir hata mesajları eklenebilir
+            if (user == null)
+                return CreateActionResult(CustomResponseDto<List<string>>.Fail(200, "Giriş başarısız"));
+
+            else
+            {
+                var token =_authenticationService.Login(user);
+
+                return CreateActionResult(CustomResponseDto<string>.Success(200, token));
+            }
         }
-
-
     }
 
 
