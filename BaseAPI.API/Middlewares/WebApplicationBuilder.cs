@@ -1,5 +1,5 @@
 ﻿using System;
-namespace BaseAPI.API.Startup
+namespace BaseAPI.API
 {
 	public static class ConfigurationInitializer
 	{

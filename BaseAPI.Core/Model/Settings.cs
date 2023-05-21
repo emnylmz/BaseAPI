@@ -5,6 +5,10 @@ namespace BaseAPI.Core.Model
 	{
 		public string SecretKeyBase64 { get; set; }
 
+		public string ProjectName { get; set; }
+
+		public string ProjectVersion { get; set; }
+
 		public string MsSQLConnection { get; set; }
 
 		public JWTSettings JWTSettings { get; set; }

@@ -2,7 +2,7 @@
 using System.Linq.Expressions;
 using BaseAPI.Core.Model;
 
-namespace BaseAPI.Core.Interfaces.Service
+namespace BaseAPI.Core.Interfaces
 {
     public interface IJWTService
     {

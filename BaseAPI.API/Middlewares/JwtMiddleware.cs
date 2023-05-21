@@ -1,7 +1,7 @@
 ﻿using System;
-using BaseAPI.Core.Interfaces.Service;
+using BaseAPI.Core.Interfaces;
 
-namespace BaseAPI.API.Startup
+namespace BaseAPI.API
 {
 	public class JwtMiddleware
 	{

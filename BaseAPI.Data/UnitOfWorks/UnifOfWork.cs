@@ -1,7 +1,7 @@
 ﻿using System;
-using BaseAPI.Core.Interfaces.UnitOfWork;
+using BaseAPI.Core.Interfaces;
 
-namespace BaseAPI.Data.UnitOfWorks
+namespace BaseAPI.Data
 {
 	public class UnitOfWork:IUnitOfWork
 	{

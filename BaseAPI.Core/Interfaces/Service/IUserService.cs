@@ -3,7 +3,7 @@ using System.Linq.Expressions;
 using BaseAPI.Core.DTOs;
 using BaseAPI.Core.Model;
 
-namespace BaseAPI.Core.Interfaces.Service
+namespace BaseAPI.Core.Interfaces
 {
     public interface IUserService:IService<User>
     {

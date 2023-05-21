@@ -1,5 +1,5 @@
 ﻿using System.Security.Cryptography;
-using BaseAPI.Core.Interfaces.Service;
+using BaseAPI.Core.Interfaces;
 using BaseAPI.Core.Model;
 using Microsoft.Extensions.Options;
 

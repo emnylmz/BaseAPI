@@ -2,8 +2,7 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using BaseAPI.Core.Interfaces.Authentication;
-using BaseAPI.Core.Interfaces.Service;
+using BaseAPI.Core.Interfaces;
 using BaseAPI.Core.Model;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;

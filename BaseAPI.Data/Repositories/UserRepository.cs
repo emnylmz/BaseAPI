@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Linq.Expressions;
-using BaseAPI.Core.Interfaces.Repository;
+using BaseAPI.Core.Interfaces;
 using BaseAPI.Core.Model;
 using Microsoft.EntityFrameworkCore;
 
-namespace BaseAPI.Data.Repositories
+namespace BaseAPI.Data
 {
     public class UserRepository : GenericRepository<User>,IUserRepository
     {

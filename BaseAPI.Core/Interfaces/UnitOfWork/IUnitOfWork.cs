@@ -1,5 +1,5 @@
 ﻿using System;
-namespace BaseAPI.Core.Interfaces.UnitOfWork
+namespace BaseAPI.Core.Interfaces
 {
 	public interface IUnitOfWork
 	{

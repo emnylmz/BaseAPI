@@ -2,7 +2,7 @@
 using System.Linq.Expressions;
 using BaseAPI.Core.Model;
 
-namespace BaseAPI.Core.Interfaces.Repository
+namespace BaseAPI.Core.Interfaces
 {
 	public interface IUserRepository: IGenericRepository<User>
     {

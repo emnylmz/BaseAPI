@@ -1,13 +1,6 @@
-﻿using System.Linq.Expressions;
-using BaseAPI.Core;
-using BaseAPI.Core.DTOs;
-using BaseAPI.Core.Interfaces.Repository;
-using BaseAPI.Core.Interfaces.Service;
-using BaseAPI.Core.Interfaces.UnitOfWork;
+﻿using BaseAPI.Core.DTOs;
+using BaseAPI.Core.Interfaces;
 using BaseAPI.Core.Model;
-using BaseAPI.Data.Repositories;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 
 namespace BaseAPI.Service.Services
 {

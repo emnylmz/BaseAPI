@@ -17,6 +17,7 @@
     </PackageReference>
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.30.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.5" />
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="8.0.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,10 +27,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="Controllers\" />
-    <None Remove="Startup\" />
+    <None Remove="Modules\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
-    <Folder Include="Startup\" />
+    <Folder Include="Modules\" />
   </ItemGroup>
 </Project>

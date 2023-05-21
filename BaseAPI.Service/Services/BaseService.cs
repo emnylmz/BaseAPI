@@ -1,8 +1,6 @@
 ﻿using System;
-using BaseAPI.Core.Interfaces.Repository;
-using BaseAPI.Core.Interfaces.Service;
-using BaseAPI.Core.Interfaces.UnitOfWork;
-using BaseAPI.Data.Repositories;
+using BaseAPI.Core.Interfaces;
+using BaseAPI.Data;
 using Microsoft.EntityFrameworkCore;
 
 namespace BaseAPI.Service.Services

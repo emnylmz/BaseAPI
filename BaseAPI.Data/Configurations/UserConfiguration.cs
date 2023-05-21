@@ -3,7 +3,7 @@ using BaseAPI.Core.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace BaseAPI.Data.Configuration
+namespace BaseAPI.Data
 {
     internal class UserConfiguration : IEntityTypeConfiguration<User>
     {

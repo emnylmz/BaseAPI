@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq.Expressions;
 
-namespace BaseAPI.Core.Interfaces.Service
+namespace BaseAPI.Core.Interfaces
 {
 	public interface IService<T> where T :class
 	{

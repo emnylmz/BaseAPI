@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using BaseAPI.Core.DTOs;
-using BaseAPI.Core.Interfaces.Service;
+using BaseAPI.Core.Interfaces;
 using BaseAPI.Core.Model;
 using BaseAPI.Service.Services;
 using Microsoft.AspNetCore.Authorization;

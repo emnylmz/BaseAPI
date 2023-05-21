@@ -1,7 +1,7 @@
 ﻿using System;
 using BaseAPI.Core.Model;
 
-namespace BaseAPI.Core.Interfaces.Authentication
+namespace BaseAPI.Core.Interfaces
 {
 	public interface IAuthenticationService
 	{

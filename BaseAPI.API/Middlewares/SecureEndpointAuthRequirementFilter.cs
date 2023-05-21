@@ -1,10 +1,10 @@
 ﻿using System;
-using BaseAPI.Core.Interfaces.Service;
+using BaseAPI.Core.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
-namespace BaseAPI.API.Startup
+namespace BaseAPI.API
 {
     internal class SecureEndpointAuthRequirementFilter : IOperationFilter
     {
