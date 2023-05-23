@@ -34,18 +34,16 @@ namespace BaseAPI.API.Controllers
             _passwordService = passwordService;
         }
 
-        [HttpGet]
-        [Route("All")]
-        [Authorize]
-        public async Task<IActionResult> All()
+        //[HttpGet("GetAll"),Authorize(Roles ="Test")]
+        [HttpGet("GetAll")]
+        public async Task<IActionResult> GetAll()
         {
             var users = await _userService.GetAllAsync();
             var userDtos = _mapper.Map<List<UserDto>>(users.ToList());
             return CreateActionResult(CustomResponseDto<List<UserDto>>.Success(200, userDtos));
         }
 
-        [HttpPost]
-        [Route("CreateUser")]
+        [HttpPost("CreateUser")]
         public async Task<IActionResult> CreateUser(User user)
         {
             var entity = await _userService.AddAsync(user);

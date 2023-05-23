@@ -21,10 +21,12 @@
     <None Remove="Configurations\" />
     <None Remove="UnitOfWorks\" />
     <None Remove="Repositories\" />
+    <None Remove="Seeds\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Configurations\" />
     <Folder Include="UnitOfWorks\" />
     <Folder Include="Repositories\" />
+    <Folder Include="Seeds\" />
   </ItemGroup>
 </Project>

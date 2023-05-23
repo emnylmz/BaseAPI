@@ -40,9 +40,8 @@ namespace BaseAPI.API.Controllers
             var user = await _userService.CheckPassAsync(loginDto);
 
             //user gelirse şifre doğru
-            //burası değişebilir hata mesajları eklenebilir
             if (user == null)
-                return CreateActionResult(CustomResponseDto<List<string>>.Fail(200, "Giriş başarısız"));
+                return CreateActionResult(CustomResponseDto<List<string>>.Fail(200, "Kullanıcı"));
 
             else
             {

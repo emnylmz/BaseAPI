@@ -16,6 +16,7 @@ namespace BaseAPI.Core.Model
 		public bool IsActive { get; set; }
 		public string LastIV { get; set; }
 
-	}
+        public ICollection<UserRole> UserRoles { get; set; }
+    }
 }
 

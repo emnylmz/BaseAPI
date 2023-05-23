@@ -58,6 +58,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
            });
 #endregion
 
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddTransient<GlobalExceptionMiddleware>();
 builder.Services.AddTransient<JwtMiddleware>();
 builder.Services.AddAutoMapper(typeof(MapProfile));
 
@@ -88,6 +90,7 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseMiddleware<JwtMiddleware>();
+app.UseMiddleware<GlobalExceptionMiddleware>();
 
 app.MapControllers();
 
