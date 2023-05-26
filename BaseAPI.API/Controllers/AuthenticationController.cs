@@ -8,6 +8,7 @@ using BaseAPI.Core.Interfaces;
 using BaseAPI.Core.Model;
 using BaseAPI.Service.Services;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -23,10 +24,11 @@ namespace BaseAPI.API.Controllers
         private readonly IUserService _userService;
 
         public AuthenticationController(
+            IHttpContextAccessor httpContextAccessor,
             IMapper mapper,
             IAuthenticationService authenticationService,
-            IUserService userService
-            )
+        IUserService userService
+            ):base(httpContextAccessor)
         {
             _authenticationService = authenticationService;
             _userService = userService;
@@ -41,7 +43,7 @@ namespace BaseAPI.API.Controllers
 
             //user gelirse şifre doğru
             if (user == null)
-                return CreateActionResult(CustomResponseDto<List<string>>.Fail(200, "Kullanıcı"));
+                return CreateActionResult(CustomResponseDto<List<string>>.Fail(200, "Kullanıcı adı veya şifre hatalı"));
 
             else
             {

@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Security.Claims;
-using System.Threading.Tasks;
 using BaseAPI.Core.DTOs;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
 using BaseAPI.Core.Enums;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using Microsoft.AspNetCore.Http;
+using AutoMapper;
 
 namespace BaseAPI.API.Controllers
 {
@@ -15,12 +17,14 @@ namespace BaseAPI.API.Controllers
     {
         public readonly int UserId;
 
-        public BaseController()
+        public BaseController(IHttpContextAccessor httpContextAccessor)
         {
-            if (User != null)
+            var identity = httpContextAccessor.HttpContext.User.Identity as ClaimsIdentity;
+            if (identity != null)
             {
-                var text=User.FindFirstValue(CustomClaimTypes.UserId);
-
+                var userId = identity.Claims.FirstOrDefault(x => x.Type == CustomClaimTypes.UserId)?.Value;
+                if (userId != null)
+                    UserId = Convert.ToInt32(userId);
             }
         }
 

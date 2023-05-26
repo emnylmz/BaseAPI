@@ -5,6 +5,8 @@
 /Users/eminyilmaz/projects/BaseAPI/BaseAPI.API/bin/Debug/net7.0/BaseAPI.API.runtimeconfig.json
 /Users/eminyilmaz/projects/BaseAPI/BaseAPI.API/bin/Debug/net7.0/BaseAPI.API.dll
 /Users/eminyilmaz/projects/BaseAPI/BaseAPI.API/bin/Debug/net7.0/BaseAPI.API.pdb
+/Users/eminyilmaz/projects/BaseAPI/BaseAPI.API/bin/Debug/net7.0/AutoMapper.dll
+/Users/eminyilmaz/projects/BaseAPI/BaseAPI.API/bin/Debug/net7.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 /Users/eminyilmaz/projects/BaseAPI/BaseAPI.API/bin/Debug/net7.0/Azure.Core.dll
 /Users/eminyilmaz/projects/BaseAPI/BaseAPI.API/bin/Debug/net7.0/Azure.Identity.dll
 /Users/eminyilmaz/projects/BaseAPI/BaseAPI.API/bin/Debug/net7.0/Humanizer.dll
@@ -80,3 +82,7 @@
 /Users/eminyilmaz/projects/BaseAPI/BaseAPI.API/obj/Debug/net7.0/BaseAPI.API.pdb
 /Users/eminyilmaz/projects/BaseAPI/BaseAPI.API/obj/Debug/net7.0/BaseAPI.API.genruntimeconfig.cache
 /Users/eminyilmaz/projects/BaseAPI/BaseAPI.API/obj/Debug/net7.0/ref/BaseAPI.API.dll
+/Users/eminyilmaz/projects/BaseAPI/BaseAPI.API/bin/Debug/net7.0/appsettings.Production.json
+/Users/eminyilmaz/projects/BaseAPI/BaseAPI.API/bin/Debug/net7.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/Users/eminyilmaz/projects/BaseAPI/BaseAPI.API/bin/Debug/net7.0/Autofac.dll
+/Users/eminyilmaz/projects/BaseAPI/BaseAPI.API/bin/Debug/net7.0/Autofac.Extensions.DependencyInjection.dll

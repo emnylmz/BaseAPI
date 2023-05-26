@@ -23,11 +23,12 @@ namespace BaseAPI.API.Controllers
         private readonly IPasswordService _passwordService;
 
         public UsersController(
+            IHttpContextAccessor httpContextAccessor,
             IMapper mapper,
             IConfiguration configuration,
             IPasswordService passwordService,
             IUserService userService
-            )
+            ) : base(httpContextAccessor)
         {
             _userService = userService;
             _mapper = mapper;
@@ -35,7 +36,7 @@ namespace BaseAPI.API.Controllers
         }
 
         //[HttpGet("GetAll"),Authorize(Roles ="Test")]
-        [HttpGet("GetAll")]
+        [HttpGet("GetAll"),Authorize]
         public async Task<IActionResult> GetAll()
         {
             var users = await _userService.GetAllAsync();

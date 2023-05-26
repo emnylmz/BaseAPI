@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using System.Security.Principal;
 using System.Text;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
@@ -25,6 +26,7 @@ builder.Services.Configure<Settings>(builder.Configuration.GetRequiredSection("S
 builder.Services.AddEndpointsApiExplorer();
 
 
+
 #region swagger
 builder.Services.AddSwaggerGen(c =>
 {
@@ -33,34 +35,36 @@ builder.Services.AddSwaggerGen(c =>
     {
         Type = SecuritySchemeType.Http,
         In = ParameterLocation.Header,
-        Name = HeaderNames.Authorization,
-        Scheme = "Bearer"
+        Name = "Authorization",
+        Scheme = "Bearer",
+        BearerFormat = "JWT",
+        Description = "Standard Authorization header using the Bearer scheme (\"bearer {token}\")",
     });
     c.OperationFilter<SecureEndpointAuthRequirementFilter>();
 });
-
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-           .AddJwtBearer(options =>
-           {
-               options.RequireHttpsMetadata = false;
-               options.SaveToken = true;
-               options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
-               {
-                   ValidateIssuer = true,
-                   ValidateAudience = true,
-                   ValidateLifetime = true,
-                   ValidateIssuerSigningKey = true,
-                   ValidIssuer = settings.JWTSettings.Issuer,
-                   ValidAudience = settings.JWTSettings.Audience,
-                   IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(settings.JWTSettings.SecretKey)),
-                   ClockSkew = TimeSpan.Zero
-               };
-           });
 #endregion
 
-builder.Services.AddHttpContextAccessor();
+#region JWT
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options => {
+    options.TokenValidationParameters = new TokenValidationParameters {
+        ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = settings.JWTSettings.Issuer,
+            ValidAudience = settings.JWTSettings.Audience,
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(settings.JWTSettings.SecretKey))
+    };
+});
+#endregion
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("CorsPolicy", builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+});
+
+builder.Services.AddAuthorization();
 builder.Services.AddTransient<GlobalExceptionMiddleware>();
-builder.Services.AddTransient<JwtMiddleware>();
 builder.Services.AddAutoMapper(typeof(MapProfile));
 
 builder.Services.AddDbContext<AppDbContext>(x =>
@@ -72,6 +76,9 @@ x.UseSqlServer(settings?.MsSQLConnection, option =>
 
 //autofac
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
+
+builder.Services.AddHttpContextAccessor();
+//builder.Services.AddTransient<IPrincipal>(provider => provider.GetService<IHttpContextAccessor>().HttpContext.User);
 
 builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder =>
     containerBuilder.RegisterModule(new RepoServiceModule()));
@@ -89,7 +96,6 @@ app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
-app.UseMiddleware<JwtMiddleware>();
 app.UseMiddleware<GlobalExceptionMiddleware>();
 
 app.MapControllers();

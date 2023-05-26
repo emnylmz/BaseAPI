@@ -12,12 +12,10 @@ namespace BaseAPI.API
     public class GlobalExceptionMiddleware : IMiddleware
     {
         private readonly ILogger _logger;
-        private readonly IJWTService _jwtService;
 
-        public GlobalExceptionMiddleware(ILogger<GlobalExceptionMiddleware> logger, IJWTService jwtService)
+        public GlobalExceptionMiddleware(ILogger<GlobalExceptionMiddleware> logger)
         {
             _logger = logger;
-            _jwtService = jwtService;
         }
 
         public async Task InvokeAsync(HttpContext context, RequestDelegate next)
